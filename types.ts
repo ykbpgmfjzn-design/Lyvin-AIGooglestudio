@@ -29,3 +29,10 @@ export interface QuizQuestion {
   question: string;
   options: string[];
 }
+
+export interface OtherProject {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+}

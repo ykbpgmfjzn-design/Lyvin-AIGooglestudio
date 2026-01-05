@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Button } from './Button';
 
 export const Calculator: React.FC = () => {
   const [price, setPrice] = useState(150000);
@@ -12,22 +11,26 @@ export const Calculator: React.FC = () => {
   const roi = (netIncome / price) * 100;
 
   return (
-    <section id="investment" className="py-20 md:py-32 bg-[#F5F5F0]">
+    <section id="investment" className="py-20 md:py-32 bg-[#F0EBE5]">
       <div className="container mx-auto px-6">
-        <div className="mb-16 text-center">
+        <div className="mb-16">
           <span className="text-gold-500 uppercase tracking-widest text-sm font-semibold mb-2 block">
-            Калькулятор
+            Инвестиции
           </span>
-          <h2 className="text-4xl md:text-5xl font-serif">Ваша Доходность</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-6 text-dark-900">Финансовая Модель</h2>
+          <p className="max-w-3xl text-gray-600 font-light leading-relaxed">
+            Lyvin Properties стремится максимально раскрыть инвестиционный потенциал каждого проекта. Для этого мы проводим тщательный анализ рынка и исследуем множество разных локаций, чтобы найти самые перспективные.
+          </p>
         </div>
 
-        <div className="bg-white p-8 md:p-12 shadow-xl max-w-4xl mx-auto flex flex-col md:flex-row gap-12">
+        <div className="bg-white p-8 md:p-12 shadow-xl max-w-5xl mx-auto flex flex-col md:flex-row gap-12">
           {/* Inputs */}
-          <div className="flex-1 space-y-8">
+          <div className="flex-1 space-y-10">
             <div>
-              <label className="block text-xs uppercase tracking-wider text-gray-500 mb-2">
-                Стоимость Апартамента ($)
-              </label>
+              <div className="flex justify-between mb-4">
+                 <label className="text-xs uppercase tracking-wider text-gray-500">Стоимость Апартамента ($)</label>
+                 <span className="font-serif text-lg">${price.toLocaleString()}</span>
+              </div>
               <input 
                 type="range" 
                 min="100000" 
@@ -37,13 +40,13 @@ export const Calculator: React.FC = () => {
                 onChange={(e) => setPrice(Number(e.target.value))}
                 className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-gold-500"
               />
-              <div className="mt-2 text-2xl font-serif">${price.toLocaleString()}</div>
             </div>
 
             <div>
-              <label className="block text-xs uppercase tracking-wider text-gray-500 mb-2">
-                Цена Аренды в сутки ($)
-              </label>
+              <div className="flex justify-between mb-4">
+                 <label className="text-xs uppercase tracking-wider text-gray-500">Цена Аренды в сутки ($)</label>
+                 <span className="font-serif text-lg">${dailyRate}</span>
+              </div>
               <input 
                 type="range" 
                 min="80" 
@@ -53,13 +56,13 @@ export const Calculator: React.FC = () => {
                 onChange={(e) => setDailyRate(Number(e.target.value))}
                 className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-gold-500"
               />
-              <div className="mt-2 text-2xl font-serif">${dailyRate}</div>
             </div>
 
             <div>
-              <label className="block text-xs uppercase tracking-wider text-gray-500 mb-2">
-                Заполняемость (%)
-              </label>
+              <div className="flex justify-between mb-4">
+                 <label className="text-xs uppercase tracking-wider text-gray-500">Заполняемость (%)</label>
+                 <span className="font-serif text-lg">{occupancy}%</span>
+              </div>
               <input 
                 type="range" 
                 min="40" 
@@ -69,36 +72,33 @@ export const Calculator: React.FC = () => {
                 onChange={(e) => setOccupancy(Number(e.target.value))}
                 className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-gold-500"
               />
-              <div className="mt-2 text-2xl font-serif">{occupancy}%</div>
             </div>
           </div>
 
           {/* Results */}
           <div className="flex-1 bg-dark-900 text-white p-8 md:-m-12 md:ml-0 flex flex-col justify-center relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gold-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+            <div className="absolute top-0 right-0 w-48 h-48 bg-gold-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
             
-            <div className="relative z-10 space-y-6">
+            <div className="relative z-10 space-y-8">
               <div>
-                <div className="text-gray-400 text-xs uppercase tracking-wider mb-1">Чистый доход в год</div>
-                <div className="text-4xl font-serif text-gold-500">${Math.round(netIncome).toLocaleString()}</div>
+                <div className="text-gray-400 text-xs uppercase tracking-wider mb-2">Чистый доход в год</div>
+                <div className="text-5xl font-serif text-gold-500">${Math.round(netIncome).toLocaleString()}</div>
               </div>
               
-              <div className="pt-6 border-t border-gray-700">
-                <div className="flex justify-between items-end">
-                  <div>
-                    <div className="text-gray-400 text-xs uppercase tracking-wider mb-1">ROI</div>
-                    <div className="text-3xl font-serif">{roi.toFixed(1)}%</div>
-                  </div>
-                  <div>
-                    <div className="text-gray-400 text-xs uppercase tracking-wider mb-1">Окупаемость</div>
-                    <div className="text-xl font-serif">{(price / netIncome).toFixed(1)} лет</div>
-                  </div>
+              <div className="grid grid-cols-2 gap-8 pt-8 border-t border-gray-700">
+                <div>
+                  <div className="text-gray-400 text-xs uppercase tracking-wider mb-1">ROI</div>
+                  <div className="text-3xl font-serif">{roi.toFixed(1)}%</div>
+                </div>
+                <div>
+                  <div className="text-gray-400 text-xs uppercase tracking-wider mb-1">Окупаемость</div>
+                  <div className="text-3xl font-serif">{(price / netIncome).toFixed(1)} <span className="text-sm">лет</span></div>
                 </div>
               </div>
 
-              <div className="pt-6">
-                 <p className="text-xs text-gray-500 mb-0 leading-tight">
-                  *Расчет является приблизительным и не является публичной офертой. Включает 35% расходов на управление и обслуживание.
+              <div className="pt-4">
+                 <p className="text-[10px] text-gray-500 mb-0 leading-tight">
+                  *Расчет является приблизительным. Включает расходы на управление, маркетинг и обслуживание (35%).
                 </p>
               </div>
             </div>
