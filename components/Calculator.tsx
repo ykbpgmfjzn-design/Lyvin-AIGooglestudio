@@ -18,9 +18,31 @@ export const Calculator: React.FC = () => {
             Инвестиции
           </span>
           <h2 className="text-4xl md:text-5xl font-serif mb-6 text-dark-900">Финансовая Модель</h2>
-          <p className="max-w-3xl text-gray-600 font-light leading-relaxed">
+          <p className="max-w-3xl text-gray-600 font-light leading-relaxed mb-12">
             Lyvin Properties стремится максимально раскрыть инвестиционный потенциал каждого проекта. Для этого мы проводим тщательный анализ рынка и исследуем множество разных локаций, чтобы найти самые перспективные.
           </p>
+
+          {/* Pricing Header */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+             <div className="bg-white p-6 shadow-sm border border-gray-100">
+               <div className="text-[10px] uppercase tracking-wider text-gray-400 mb-2">Площадь юнитов</div>
+               <div className="text-xl font-serif text-dark-900">79–114 м²</div>
+             </div>
+             <div className="bg-white p-6 shadow-sm border border-gray-100">
+               <div className="text-[10px] uppercase tracking-wider text-gray-400 mb-2">Цена за м²</div>
+               <div className="text-xl font-serif text-dark-900">4 075–5 065 $</div>
+               <div className="text-[10px] text-gray-400 mt-1">c НДС 11%</div>
+             </div>
+             <div className="bg-white p-6 shadow-sm border border-gray-100">
+               <div className="text-[10px] uppercase tracking-wider text-gray-400 mb-2">Цена Юнитов</div>
+               <div className="text-xl font-serif text-dark-900">321 900–577 200 $</div>
+               <div className="text-[10px] text-gray-400 mt-1">c НДС 11%</div>
+             </div>
+             <div className="bg-dark-900 p-6 shadow-sm text-white flex flex-col justify-center items-center text-center">
+               <div className="text-gold-500 text-3xl font-serif mb-1">3 ●</div>
+               <div className="text-[10px] uppercase tracking-wider">Осталось юнитов</div>
+             </div>
+          </div>
         </div>
 
         <div className="bg-white p-8 md:p-12 shadow-xl max-w-5xl mx-auto flex flex-col md:flex-row gap-12">
@@ -34,7 +56,7 @@ export const Calculator: React.FC = () => {
               <input 
                 type="range" 
                 min="100000" 
-                max="300000" 
+                max="600000" 
                 step="5000"
                 value={price}
                 onChange={(e) => setPrice(Number(e.target.value))}
@@ -50,7 +72,7 @@ export const Calculator: React.FC = () => {
               <input 
                 type="range" 
                 min="80" 
-                max="300" 
+                max="500" 
                 step="10"
                 value={dailyRate}
                 onChange={(e) => setDailyRate(Number(e.target.value))}

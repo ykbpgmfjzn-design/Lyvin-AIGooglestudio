@@ -4,8 +4,10 @@ import { Hero } from './components/Hero';
 import { ProjectDetails } from './components/ProjectDetails';
 import { Location } from './components/Location';
 import { Complex } from './components/Complex';
+import { MasterPlan } from './components/MasterPlan';
 import { ApartmentTypes } from './components/ApartmentTypes';
 import { Management } from './components/Management';
+import { MarketAnalysis } from './components/MarketAnalysis';
 import { Calculator } from './components/Calculator';
 import { OtherProjects } from './components/OtherProjects';
 import { ContactFooter } from './components/ContactFooter';
@@ -23,8 +25,10 @@ function App() {
         <ProjectDetails />
         <Location />
         <Complex />
+        <MasterPlan />
         <ApartmentTypes />
         <Management />
+        <MarketAnalysis />
         <Calculator />
         <OtherProjects />
       </main>
